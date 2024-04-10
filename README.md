@@ -1,1 +1,3 @@
-# inovacao
+# Senior Inovacao Challenge
+
+O Senior Inovação é uma fabrica de software aplicada da Senior Sistemas. Neste setor, trabalhamos com as tecnologias que são tendência no Brasil e no Mundo. As pessoas que trabalham no laboratório têm como característica uma boa base acadêmica, a vontade de explorar novos desafios e a determinação para encontrar o caminho para a aplicação destas pesquisas nos produtos e serviços. Trabalhamos com tecnologias como IA, IoT, Cloud Computing, Computer Vision e muito mais. Se identifica com tudo isso? Realize um de nossos desafios técnicos e você estará habilitada a participar de nossas vagas.
