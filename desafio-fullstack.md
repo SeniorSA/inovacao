@@ -1,58 +1,153 @@
-# Desafio programação - para vaga Fullstack - JUNIOR
+# Case FullStack
 
-Por favor leia este documento do começo ao fim, com muita atenção.
-O intuito deste teste é avaliar seus conhecimentos técnicos como fullstack junior, e assim entendermos melhor o quanto você possui de conhecimento e o quanto nós podemos te ajudar a crescer e se desenvolver.
+## Contexto
 
-Este teste consiste em criar um pequeno cadastro de clientes com vínculo de contatos e depois mostrar o cliente e seus contatos vinculados.
+O SeniorLabs é um time de P&I que busca trazer inovações das novas tecnologias e tendências do Brasil e do mundo para estudar e criar soluções aplicadas aos produtos e negócios da Senior. Uma das ferramentas desenvolvidas dentro do SeniorLabs é o Content Generator, que utiliza LLM para, como o nome sugere, gerar conteúdos. Com ela, podemos gerar textos, resumir informações ou até mesmo usá-la como um assistente inteligênte. Com base nisso, seu desafio é desenvolver uma aplicação FullStack que inclua comunicação com o Content Generator.
 
-# Instruções de entrega do desafio
+1. **Funcionalidade principal:** Cadastrar resumos de aula.
+2. **Funcionalidade especial:** **Criar resumos inteligentes** a partir do **texto extraído de arquivos enviados** pelo usuário ou **por um tópico informado**.
 
-1. Primeiro, crie um repositório público no Github (crie uma conta se você não possuir).
-2. Em seguida, implemente o projeto tal qual descrito abaixo, em seu clone local.
-3. Faça o push do seu projeto local para um repositório público no Github.
-3. Por fim, envie um via e-mail com o link do projeto em seu repositório para o contato geiseane.seberino@senior.com.br e leonardo.fiedler@senior.com.br
-
-# Descrição do projeto
-Você deverá criar um cadastro de clientes que poderá conter muitos contatos associados. Depois deste processo deverá ter um relatório em tela, ou PDF que mostre os clientes e os contatos vinculados a este cliente.
-
-***OBS: utilize a linguagem de sua preferência.***
-
-**Sua aplicação web DEVE CONTER:**
-
-1. Uma tela de cadastro de cliente com os seguintes campos:
-* nome completo
-* e-mails
-* telefones
-* data de registro (data em que o cliente foi registrado)
-2. Ter uma tela para cadastro de contato com os seguintes campos:
-* nome completo
-* e-mails
-* telefones
-3. Tanto a tela de cliente quando a de contato devem ter as operações básicas de um CRUD (criar/editar/visualizar/excluir).
-4. Um cliente poderá ter mais de um contato vinculado a ele.
-5. Um relatório (podendo ser em tela) que mostre o cliente e seus contatos
-
-**Diferenciais:**
-
-1. Ter uma documentação clara do projeto.
-2. Apresentar telas bonitas, porém, preferimos o processo funcional e fluido.
-3. Cobertura de testes.
-4. Login de acesso.
-
-# Avaliação
-
-Seu projeto será avaliado de acordo com os seguintes critérios:
-
-1. Sua aplicação preenche os requerimentos básicos?
-2. Você documentou a maneira de configurar o ambiente e rodar sua aplicação?
-3. Você seguiu as instruções de envio do desafio?
-
-Adicionalmente, tentaremos verificar a sua familiarização com as bibliotecas (padrões) (standard libs), bem como sua experiência com programação orientada a objetos a partir da estrutura de seu projeto.
-
-# Referência
-
-Este desafio foi baseado neste outro desafio: https://github.com/Pagnet/desafio-back-end
+> O foco é demonstrar boas decisões de arquitetura, UX simples, código limpo e bom uso de testes automatizados.
+> 
 
 ---
 
-Boa sorte!
+## Entregáveis
+
+- Repositório (GitHub/GitLab) com:
+    - **Frontend** e **Backend** (monorepo ou pastas separadas).
+    - **README** com setup e instruções de execução.
+    - **.env.example** (sem secrets).
+    - **Teste(s)** automatizado(s) mínimos (unidade e/ou integração).
+
+---
+
+## Requisitos Funcionais
+
+### 1) Espaço de estudo
+
+- **CRUD de disciplinas, aulas e resumos** (por exemplo: Matemática > Aula 03 – Funções > Resumo).
+
+(Os campos ficam a seu critério, mas o resumo precisa ter um esquema de tags, para palavras chave do resumo).
+
+- Uma disciplina pode ter várias aulas
+- Uma aula pode ter um resumo
+
+### 2) Upload de arquivos e extração de texto
+
+- Ao adicionar resumo, deve ter a opção de upload de arquivos, como: **PDF**, **DOCX** e **TXT**.
+- A extração das informações do **texto bruto** deve ser feita no backend.
+- Exibir **pré-visualização** do texto extraído antes de resumir.
+- Nessa tela, deve ter uma opção de utilizar o assistente de IA, que poderá resumir o texto enviado ou criar um resumo com base no tópico escolhido.
+
+### 4) Assistente I**nteligente (IA)**
+
+Utilizar a **API Externa** do **Content Generator** da Senior para resumir textos  — O Content Generator funciona como outras LLMs, logo, você precisa especificar para ela o que deseja fazer.
+
+1. **Resumo inteligente**
+- Com o texto coletado na etapa anterior, deve ter uma opção de gerar um resumo com este texto (Ex: Gere um resumo sobre: texto_a_ser_resumido).
+- Salvar o resumo como um **Resumo de Aula** vinculado à aula escolhida.
+
+b. **Geração de resumos**
+
+- Além da opção de gerar um resumo com base em um texto previamente enviado pelo usuário, também deve ter a opção do usuário receber um resumo com base em um tema (Ex: Gere um resumo sobre: tema_a_ser_resumido)
+- Salvar o resumo como um **Resumo de Aula** vinculado à aula escolhida.
+
+### 5) Busca e organização
+
+- Busca por **texto completo** (em títulos e conteúdo dos resumos).
+- Filtrar por **disciplina**, **aula** e **tags**.
+- Ordenação por **data**, **relevância** e **tamanho**.
+
+---
+
+## Requisitos Não-Funcionais
+
+- **Frontend**: UI responsiva, acessível (labels, contraste, navegação por teclado). A Stack é da sua escolha, mas será um diferencial usar Angular.
+- **Backend**: A Stack é da sua escolha, mas será um diferencial usar Spring Boot.
+- **Banco**: O banco é da sua escolha, mas será um diferencial usar PostgreSQL.
+- **Docs**: Endpoints documentados (Swagger/OpenAPI ou coleção Rest).
+- **Observabilidade**: tratamento de erros e timeouts.
+- **Segurança**:
+    - Nunca expor a API Key no frontend; chamadas de IA **sempre** via backend.
+    - **(Opcional)** Rate limiting básico no endpoint de IA.
+
+**(Opcional) Performance**: resposta de geração ≤ **20 s** para arquivos de até 100 páginas (pode ser assíncrono com job + polling).
+
+- **Internacionalização**: Interface em **pt-BR**; resumos em pt-BR por padrão.
+
+---
+
+## Fluxos Principais
+
+### Fluxo A — Cadastrar resumo manual
+
+1. Usuário cria Disciplina e Aula.
+2. Abre “Novo Resumo”, preenche campos, salva.
+3. Item aparece na lista, com busca e filtros funcionando.
+
+### Fluxo B — Resumo inteligente via arquivo
+
+1. Usuário faz **upload** do arquivo.
+2. Backend **extrai** o texto e retorna um preview.
+3. Backend comunica com a API do Content Generator, que **resume** e o backend salva o resumo retornado.
+4.  frontend mostra progresso (spinner + status).
+5. Exibir resultado estruturado + botão “Salvar como Resumo de Aula”.
+
+### Fluxo C — Resumo inteligente via tema/tópico
+
+1. Usuário define um tema.
+2. Backend comunica com a API do Content Generator, que **resume** e o backend salva o resumo retornado.
+3.  frontend mostra progresso (spinner + status).
+4. Exibir resultado estruturado + botão “Salvar como Resumo de Aula”.
+
+## UTILIZAÇÃO DO COMPLETIONS e API Key
+
+Para acessar o endpoint do content generator, chamada completions, considere as seguintes informações:
+ 
+
+1. **Url de acesso**
+
+[https://platform-homologx.senior.com.br/t/senior-x/platform/iassist/api/latest/completions](https://platform-homologx.senior.com.br/t/senior-x/platform/iassist/api/latest/completions)
+
+1. **Parametros que o completions recebe:**
+
+```json
+{
+    "prompt": "Some text to send to IA", // Texto que será enviado para a IA
+    "provider": "AZURE_OPEN_AI", // Provedor de inteligencia artifical.
+    "parameters": { // Parâmetros que serão utilizados pelo provedor. Os parâmetros são um mapa de String e Object
+        "max_tokens": 2000, // passando um valor do tipo integer
+        "temperature": 0.5, // passando um valor do tipo float
+     	"model": "gpt-3.5-turbo" // passando um parametro do tipo string
+    }
+}
+```
+
+1. **Retorno do endpoint**
+
+```json
+{
+    "text": "Returned text from IA", // Texto que será retornado da inteligência artificial
+    "promptTokens": 1, // Quantidade de tokens da pergunta
+    "replyTokens": 2  // Quantidade de tokens da resposta
+}
+```
+
+### Obter API KEY:
+
+Para utilização do endpoint, é necessário autenticação via header Authorization. Para obter o valor desse token, é necessário executar um POST no curl a seguir:
+
+```jsx
+curl --location 'https://platform-homologx.senior.com.br/t/senior.com.br/bridge/1.0/anonymous/rest/platform/authentication/actions/loginWithKey' \
+--header 'Content-Type: application/json' \
+--data '{
+    "accessKey": "**************************(verificar chave com o responsável da vaga)",
+    "secret": "**************************(verificar chave com o responsável da vaga)",
+    "tenantName": "iassistinterno"
+}'
+```
+
+Irá retornar access_token.
+
+Para utiliza-lo basta informar:  Beaer {{access_token}}
